@@ -18,3 +18,18 @@ test = ucla[-idx,]
 #개수확인
 nrow(train)
 nrow(test)
+
+#3. 학습 데이터 예측 모델 만들기
+
+#결정트리 모델링
+r = rpart(admit~., data = train)
+#랜덤포레스트 tree 50개 모델
+f50 = randomForest(admit~., data = train, ntree = 50)
+#랜덤포레스트 tree 1000개
+f1000 = randomForest(admit~., data = train, ntree = 1000)
+#svm Kernel = 'polynomial'
+sP = svm(admit~., data = train, kernel = 'polynomial')
+#svm Kernel = 'radial'
+sR = svm(admit~., data = train, kernel = 'radial')
+#knn
+k_pred = knn(train[,1:4], test, train$admit, k = 5)
