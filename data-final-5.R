@@ -33,3 +33,35 @@ sP = svm(admit~., data = train, kernel = 'polynomial')
 sR = svm(admit~., data = train, kernel = 'radial')
 #knn
 k_pred = knn(train[,1:4], test, train$admit, k = 5)
+
+
+#°áÁ¤Æ®¸® ¿¹Ãø
+r_pred = predict(r, test, type = 'class')
+#È¥µ·Çà·Ä
+table(r_pred, test$admit)
+confusionMatrix(r_pred, test$admit)
+#50°³ ¿¹Ãø
+f50_pred = predict(f50, test, type = 'class')
+#È¥µ·Çà·Ä
+table(f50_pred, test$admit)
+confusionMatrix(f50_pred, test$admit)
+#1000°³ ¿¹Ãø
+f1000_pred = predict(f1000, test, type = 'class')
+#È¥µ·Çà·Ä
+table(f1000_pred, test$admit)
+confusionMatrix(f1000_pred, test$admit)
+#svm polynomial ¸ğµ¨ ¿¹Ãø
+sP_pred = predict(sP, test, type = 'class')
+#È¥µ·Çà·Ä
+table(sP_pred, test$admit)
+confusionMatrix(sP_pred, test$admit)
+#svm Radial ¸ğµ¨ ¿¹Ãø
+sR_pred = predict(sR, test, type = 'class')
+#È¥µ·Çà·Ä
+table(sR_pred, test$admit)
+confusionMatrix(sR_pred, test$admit)
+#k-nn ¸ğµ¨ ¿¹Ãø
+#À§¿¡¼­ Á¤ÀÇÇÑ k_pred
+#È¥µ·Çà·Ä
+table(k_pred, test$admit)
+confusionMatrix(k_pred, test$admit)
